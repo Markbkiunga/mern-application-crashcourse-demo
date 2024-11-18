@@ -5,13 +5,14 @@ import productRoutes from './routes/product.route.js';
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT;
 
 app.use(express.json());
-app.use('api/products', productRoutes);
+app.use('/api/products', productRoutes);
 
 console.log(process.env.MONGO_URI);
 
-app.listen(5555, () => {
+app.listen(PORT, () => {
   connectDB();
-  console.log('Server started at http://localhost:5555');
+  console.log('Server started at http://localhost:' + PORT);
 });
